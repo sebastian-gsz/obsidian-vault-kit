@@ -1,0 +1,9 @@
+{
+  "name": "obsidian-vault-kit",
+  "version": "1.2.0",
+  "description": "Plugin para trabajar con vaults locales de Obsidian: Markdown de Obsidian, Bases, Canvas, CLI de Obsidian, sincronización headless, extracción web con Defuddle, plantillas con Knap, y skills de autoría de vault (escritura de notas y glosario de definiciones con el plugin Note Definitions) y optimización de imágenes webp (estáticos con cwebp, screencasts animados a MP4). Dependencias CLI gestionadas con pnpm dentro del propio plugin.",
+  "author": {
+    "name": "sebastian-gsz"
+  },
+  "skills": "./skills"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "obsidian-vault-kit-deps",
+  "version": "1.0.0",
+  "description": "Dependencias CLI del plugin obsidian-vault-kit: defuddle-cli (extracción web) y knap (plantillas). Gestionadas con pnpm dentro del propio plugin; borrar el plugin lo borra todo, sin huérfanos en el prefijo global de npm.",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.18.0",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.18.0",
+  "type": "module",
+  "dependencies": {
+    "defuddle-cli": "^0.7.0",
+    "knap": "^0.6.0"
+  },
+  "private": true
+}
