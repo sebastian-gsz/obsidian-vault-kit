@@ -1,0 +1,55 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JSON de manifests válidos
+        run: |
+          for f in marketplace.json .agents/plugins/marketplace.json plugins/obsidian/plugin.json; do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || exit 1
+            echo "ok: $f"
+          done
+
+      - name: Consistencia de versiones
+        run: |
+          node -e "
+            const fs = require('fs');
+            const m = JSON.parse(fs.readFileSync('marketplace.json','utf8'));
+            const p = JSON.parse(fs.readFileSync('plugins/obsidian/plugin.json','utf8'));
+            const vm = m.plugins[0].version, vp = p.version || p.meta?.version;
+            if (vm !== vp) {
+              console.error('versiones inconsistentes:', {marketplace: vm, plugin: vp});
+              process.exit(1);
+            }
+            console.log('ok: versiones =', vm);
+          "
+
+      - name: Frontmatter de SKILL.md completo
+        run: |
+          fail=0
+          for f in $(find plugins/obsidian/skills -name 'SKILL.md'); do
+            dir=$(basename $(dirname "$f"))
+            grep -q '^name:' "$f" || { echo "falta name: $f"; fail=1; }
+            grep -q '^description:' "$f" || { echo "falta description: $f"; fail=1; }
+            [ "$dir" != "$(grep '^name:' "$f" | head -1 | cut -d' ' -f2-)" ] && \
+              echo "aviso: nombre de carpeta ('$dir') difiere del frontmatter en $f"
+          done
+          exit $fail
+
+      - name: Sin marcas de terceros en documentación ni comentarios
+        run: |
+          hits=$(grep -riI --exclude-dir=.git -l -E 'zcode|z\.ai' --include='*.md' . || true)
+          if [ -n "$hits" ]; then
+            echo "menciones prohibidas en:"
+            echo "$hits"
+            exit 1
+          fi
+          echo "ok: documentación limpia"

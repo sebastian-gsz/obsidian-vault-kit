@@ -1,0 +1,26 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "obsidian-vault-kit",
+  "version": "1.2.0",
+  "description": "Plugin para trabajar con vaults locales de Obsidian: Markdown de Obsidian, Bases, Canvas, CLI de Obsidian, sincronización headless, extracción web con Defuddle, plantillas con Knap, y skills de autoría de vault (escritura de notas y glosario de definiciones con el plugin Note Definitions) y optimización de imágenes webp (estáticos con cwebp, screencasts animados a MP4). Dependencias CLI gestionadas con pnpm dentro del propio plugin.",
+  "description_i18n": {
+    "es": "Plugin para trabajar con vaults locales de Obsidian: Markdown de Obsidian, Bases, Canvas, CLI de Obsidian, sincronización headless, extracción web con Defuddle, plantillas con Knap, y skills de autoría de vault (escritura de notas y glosario de definiciones con el plugin Note Definitions) y optimización de imágenes webp (estáticos con cwebp, screencasts animados a MP4). Dependencias CLI gestionadas con pnpm dentro del propio plugin.",
+    "en": "Plugin for working with local Obsidian vaults: Obsidian Markdown, Bases, Canvas, the Obsidian CLI, headless sync, web extraction with Defuddle, templates with Knap, and vault authoring skills (note writing and the definitions glossary backed by the Note Definitions plugin). CLI dependencies are managed with pnpm inside the plugin itself."
+  },
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "markdown",
+    "bases",
+    "canvas",
+    "pkm",
+    "notes",
+    "defuddle",
+    "knap",
+    "headless",
+    "pnpm",
+    "vault",
+    "definitions",
+    "note-definitions"
+  ]
+}

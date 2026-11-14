@@ -1,0 +1,18 @@
+# Dependencias (los binarios enjaulados viven en plugins/obsidian/node_modules)
+node_modules/
+
+# Artefactos de build y empaquetado
+dist/
+build/
+*.zip
+
+# Residuos del sistema
+.DS_Store
+Thumbs.db
+*.bak
+*~
+
+# Entornos y secretos — nunca en el repo
+.env
+.env.*
+*.key
